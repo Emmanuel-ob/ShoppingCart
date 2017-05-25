@@ -27,12 +27,12 @@ class CartController extends Controller
     $itemId = $product_from_db->id;
     $itemName = $product_from_db->name;
     $itemPrice = $product_from_db->price;
-    $quantity = 1;   
+    $quantity = $request->quantity;   
     $checker = "product.$itemName";
-    $product = ['name' => $itemName, 'price' => $itemPrice, 'quantity' => 1];
+    $product = ['name' => $itemName, 'price' => $itemPrice, 'quantity' => $quantity, 'id' => $itemId];
     if (\Session::has($checker)){
         \Session::pull($checker);
-        $product['quantity'] = $product['quantity'] + 1;
+        $product['quantity'] = $product['quantity'] + $quantity;
         \Session::put($checker, $product);
     } else {
       \Session::put($checker, $product);

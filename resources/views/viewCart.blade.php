@@ -14,20 +14,41 @@
         
     </head>
     <body>
+
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12">
         
 
     @if(Session::has('product'))
        @foreach(Session::get('product') as $item)
           
-          <p>{{$item['name']}}
-             {{$item['price']}}
-             {{$item['quantity']}}</p>
+          <div class="col-md-4">
+             <h3>Item: {{$item['name']}}</h3>
+             <span>price = {{$item['price']}}</span><br>
+             <span>quantity {{$item['quantity']}}</span><br>
+             <input type="submit" name="" value="Remove">
+             <form method="get" action="/cart/add/{{$item['id']}}">
+             {{ csrf_field() }}
+             <input type="submit" name="" value="Add">
+             </form>
+
+          </div>
        @endforeach
     @endif
   
-        
+       
+       
 
-        
-    </section>  
+    </div>
+
+
+    </div>
+
+       <br>
+      <div class="">
+     &nbsp;&nbsp;<input type="submit" name="" value="Clear Cart">
+      </div> 
+    </div> 
     </body>
 </html>

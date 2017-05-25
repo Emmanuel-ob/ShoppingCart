@@ -24,27 +24,57 @@
        @endforeach
     @endif
  -->  
-         <a href="/cart/view"><button class="btn btn-warning">CART({{ count(\Session::get('product')) }})</button></a>
-        
-        <section class="container">
+         <a href="/cart/view"><button class="btn btn-warning">CART({{ count(\Session::get('product')) }})</button></a><br>
 
-        <ul class="list-group">
+      <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+              <div class="panel-heading">Products</div>
+                <div class="panel-body">
+
+        
+        <!-- <section class="container"> -->
+        <div class="container">
+        <div class="row">
+      
+            
+
+        <!-- <ul class="list-group"> -->
             @foreach ($items as $item)
-                <li class="list-group-item">
-                    <h2><a class="header">{{$item->name}}</a></h1><br>
-                    <p style="word-break: break-all;">{{$item->price}}</p>
-                    <br/>
+                <div class="col-md-4">
+                    <h3><a class="header">{{$item->name}}</a></h3>
+                    <span style="word-break: break-all;">{{$item->price}}</span>
+                    <br>
                     <form method="get" action="/cart/add/{{$item->id}}">
                      {{ csrf_field() }}
+                     <select class="form-control" name="quantity" id=""  onchange="" required>
+                                                   <option>1</option>
+                                                   <option>2</option>
+                                                   <option>3 </option>
+                                                   <option>4 </option>
+                                                   <option>5 </option>
+                                                   <option>6 </option>
+                                </select>
                     <input type="submit" name="" value="Add to Cart">
                     
                     </form>
-                </li><br>
+                </div>
             @endforeach
-        </ul>
+        <!-- </ul> -->
 
-        
-    </section> 
+        </div>
+        </div>
+        </div>
+    <!-- </section> --> 
+
+
+             
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
 
         <!-- <div class="content">
            <button><a class="item btn" href="/cart/add/{{$item->id}}">Add to Cart</a></button>
